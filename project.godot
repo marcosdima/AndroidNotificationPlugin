@@ -10,10 +10,22 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
-config/features=PackedStringArray("4.4", "Mobile")
+config/name="AndroidNotificationPlugin"
+run/main_scene="uid://ch54hrrwwgnf8"
+config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=648
+window/size/viewport_height=1152
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/NotificationHandler/plugin.cfg")
 
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
