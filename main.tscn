@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://ch54hrrwwgnf8"]
+
+[ext_resource type="Script" uid="uid://bl06hdbdus50v" path="res://addons/NotificationHandler/scripts/notification_handler.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bx8cfqe2ic52r" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Script" uid="uid://cknw6c3c8filt" path="res://addons/NotificationHandler/scripts/data/imagen.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bo8p0iulxlldr" path="res://addons/NotificationHandler/scripts/data/notifications/notification.gd" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://c7r57bj1xl7r4" path="res://addons/NotificationHandler/scripts/data/channel.gd" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dnou3fd3dwi4e" path="res://static/images/mate.png" id="3_lquwl"]
+
+[sub_resource type="Resource" id="Resource_272bh"]
+script = ExtResource("2_7mycd")
+title = "Notification Title"
+content = "Here, content."
+small_icon = "small_icon.png"
+metadata/_custom_type_script = "uid://bo8p0iulxlldr"
+
+[sub_resource type="Resource" id="Resource_7mycd"]
+script = ExtResource("2_1bvp3")
+texture = ExtResource("3_lquwl")
+save_name = "small_icon"
+metadata/_custom_type_script = "uid://cknw6c3c8filt"
+
+[sub_resource type="Resource" id="Resource_lquwl"]
+script = ExtResource("3_1bvp3")
+channel_id = "channel_01"
+channel_name = "Venecia"
+description = "Grand Canal."
+importance = 4
+metadata/_custom_type_script = "uid://c7r57bj1xl7r4"
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lquwl")
+notification_object = SubResource("Resource_272bh")
+delay = 5
+
+[node name="Body" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 648.0
+offset_bottom = 1152.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SendNotification" type="Button" parent="Body/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Send"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Image" type="Button" parent="Body/MarginContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Image"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Exit" type="Button" parent="Body/MarginContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Exit"
+
+[node name="NotificationHandler" type="Node" parent="."]
+script = ExtResource("1_ig7tw")
+images = Array[ExtResource("2_1bvp3")]([SubResource("Resource_7mycd")])
+channels = Array[ExtResource("3_1bvp3")]([SubResource("Resource_lquwl")])
+metadata/_custom_type_script = "uid://bl06hdbdus50v"
+
+[connection signal="pressed" from="Body/MarginContainer/SendNotification" to="." method="_on_send_notification_pressed"]
+[connection signal="pressed" from="Body/MarginContainer2/Image" to="." method="_on_image_pressed"]
