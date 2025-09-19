@@ -36,16 +36,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lquwl")
-channel = "as"
+channel = "channel_01"
 notification_object = SubResource("Resource_272bh")
 delay = 4
 
-[node name="Body" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 648.0
 offset_bottom = 1152.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 100
 
-[node name="MarginContainer" type="MarginContainer" parent="Body"]
+[node name="Body" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -53,12 +60,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SendNotification" type="Button" parent="Body/MarginContainer"]
+[node name="SendNotification" type="Button" parent="MarginContainer/Body/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Send"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Body"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -66,12 +73,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Image" type="Button" parent="Body/MarginContainer2"]
+[node name="Image" type="Button" parent="MarginContainer/Body/MarginContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Image"
 
-[node name="MarginContainer3" type="MarginContainer" parent="Body"]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -79,12 +86,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Json" type="Button" parent="Body/MarginContainer3"]
+[node name="Json" type="Button" parent="MarginContainer/Body/MarginContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "JSON"
 
-[node name="MarginContainer4" type="MarginContainer" parent="Body"]
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -92,23 +99,23 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/MarginContainer4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Body/MarginContainer4"]
 layout_mode = 2
 
-[node name="Create" type="Button" parent="Body/MarginContainer4/HBoxContainer"]
+[node name="Create" type="Button" parent="MarginContainer/Body/MarginContainer4/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 70
 text = "Create"
 
-[node name="Delete" type="Button" parent="Body/MarginContainer4/HBoxContainer"]
+[node name="Delete" type="Button" parent="MarginContainer/Body/MarginContainer4/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 70
 text = "Delete
 "
 
-[node name="MarginContainer5" type="MarginContainer" parent="Body"]
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -116,7 +123,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Exit" type="Button" parent="Body/MarginContainer5"]
+[node name="Exit" type="Button" parent="MarginContainer/Body/MarginContainer5"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Exit"
@@ -127,9 +134,9 @@ images = Array[ExtResource("2_1bvp3")]([SubResource("Resource_7mycd")])
 channels = Array[ExtResource("3_1bvp3")]([SubResource("Resource_lquwl")])
 metadata/_custom_type_script = "uid://bl06hdbdus50v"
 
-[connection signal="pressed" from="Body/MarginContainer/SendNotification" to="." method="_on_send_notification_pressed"]
-[connection signal="pressed" from="Body/MarginContainer2/Image" to="." method="_on_image_pressed"]
-[connection signal="pressed" from="Body/MarginContainer3/Json" to="." method="_on_json_pressed"]
-[connection signal="pressed" from="Body/MarginContainer4/HBoxContainer/Create" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="Body/MarginContainer4/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
-[connection signal="pressed" from="Body/MarginContainer5/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer/SendNotification" to="." method="_on_send_notification_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer2/Image" to="." method="_on_image_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer3/Json" to="." method="_on_json_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer4/HBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer4/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/MarginContainer5/Exit" to="." method="_on_exit_pressed"]
