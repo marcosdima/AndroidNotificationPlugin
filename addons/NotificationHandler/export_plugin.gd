@@ -25,7 +25,7 @@ class AndroidExportPlugin extends EditorExportPlugin:
 	
 	
 	func _get_android_libraries(_platform, _debug):
-		return PackedStringArray([_plugin_name + "/bin/" + _plugin_name + ".aar"])
+		return PackedStringArray([_plugin_name + "/bin/" + _plugin_name + "-release.aar"])
 	
 	
 	func _get_android_dependencies(_platform, _debug):
