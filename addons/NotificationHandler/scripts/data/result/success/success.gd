@@ -1,0 +1,2 @@
+extends NotificationResult
+class_name NotificationSucces

@@ -6,7 +6,7 @@ extends Control
 @export var delay: int = 0
 @export_group("")
 
-@onready var margin: Container = $Body
+@onready var margin: Container = $MarginContainer
 
 func _ready():
 	call_deferred("_init_sizes")
@@ -51,7 +51,7 @@ func _on_json_pressed() -> void:
 	JSONHandler.save_json(json_name, init_noti.as_dictionary()) ## TODO
 
 
-var aux_id: int = 0
+var aux_id: int = -1
 func _on_create_pressed() -> void:
 	var res = NotificationNode.schedule(
 		channel,
@@ -65,15 +65,24 @@ func _on_create_pressed() -> void:
 			),
 		delay,
 	)
-	var data = JSON.parse_string(res)
-	var key = NotificationNode.NOTIFICATION_ID
-	if data.has(key):
-		aux_id = data[key]
+	
+	var result_parsed = NotificationResult.parse(res)
+	if result_parsed is NotificationCreated:
+		aux_id = result_parsed.notification_id
+	else:
+		printerr("Error: ", result_parsed)
 
 
 func _on_delete_pressed() -> void:
-	NotificationNode.cancel(aux_id)
-	aux_id = 0
+	if aux_id > 0:
+		var res = NotificationNode.cancel(aux_id)
+		aux_id = -1
+		
+		var result_parsed = NotificationResult.parse(res)
+		if result_parsed is NotificationCancaled:
+			print("Canceled: ", result_parsed.canceled)
+		else:
+			printerr("Error: ", result_parsed)
 
 
 func _on_exit_pressed() -> void:
