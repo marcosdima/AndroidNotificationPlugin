@@ -19,13 +19,14 @@ func _exit_tree():
 class AndroidExportPlugin extends EditorExportPlugin:
 	# TODO: Update to your plugin's name.
 	var _plugin_name = "NotificationHandler"
-	
+	var _godot_plugin_name = "AndroidNotificationPlugin"
+
 	func _supports_platform(platform):
 		return platform is EditorExportPlatformAndroid
 	
 	
 	func _get_android_libraries(_platform, _debug):
-		return PackedStringArray([_plugin_name + "/bin/" + _plugin_name + "-release.aar"])
+		return PackedStringArray([_godot_plugin_name + "/bin/" + _plugin_name + "-release.aar"])
 	
 	
 	func _get_android_dependencies(_platform, _debug):
