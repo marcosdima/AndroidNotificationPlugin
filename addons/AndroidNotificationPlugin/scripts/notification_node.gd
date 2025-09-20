@@ -83,6 +83,13 @@ static func cancel(
 	if !was_setted(): return ""
 	return _instance._plugin.cancel(notification_id)
 
+
+## Request post notification permission (Android 13+)
+static func request_post_notification():
+	if !was_setted(): return 
+	_instance._plugin.requestPostNotificationPermission()
+
+
 # # Plugin interfaces # #
 
 func _ready() -> void:
