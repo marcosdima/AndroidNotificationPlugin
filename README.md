@@ -6,7 +6,7 @@ AndroidNotificationPlugin is a Godot plugin for managing and sending notificatio
 
 ## Installation
 
-1. Download the `.zip` file of this repository.  
+1. Download the `.zip` file of this repository. (Or just clone the repository)
 2. Extract it into your project under `res://addons/`.  
    The structure should look like this:
 
