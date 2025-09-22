@@ -40,8 +40,62 @@ res://
 
 ## Usage
 
-After setup, the plugin will be ready to use.  
-Examples of usage can be found in the `main.gd` file provided in the repository.
+After setup, the plugin will be ready to use. This section describes the main functions available for sending, scheduling, and managing notifications in your Godot Android project. Examples of usage can be found in the `main.gd` file included in the repository.
+
+
+### Send a notification immediately
+```gdscript
+trigger_notification(channel: String, notification_data: Notification) -> String
+```
+**Parameters:**
+   - `channel` (`String`): The notification channel identifier.
+   - `notification_data` (`Notification`): Notification object.
+
+---
+### Send a notification from JSON
+```gdscript
+json_notification(channel: String, json_name: String) -> String
+```
+**Parameters:**
+   - `channel` (`String`): The notification channel identifier.
+   - `json_name` (`String`): Name of the JSON file containing notification data.
+
+[Read this before use JSON](#considerations)
+
+---
+### Schedule a notification after a delay
+```gdscript
+schedule(channel: String, notification_data: Notification, past_n_seconds: int = 0) -> String
+```
+**Parameters:**
+   - `channel` (`String`): The notification channel identifier.
+   - `notification_data` (`Notification`): Notification object.
+   - `past_n_seconds` (`int`, optional): Delay in seconds before the notification is triggered (default is 0).
+
+---
+### Schedule a JSON-based notification after a delay
+```gdscript
+schedule_json(channel: String, json_name: String, past_n_seconds: int = 0) -> String
+```
+**Parameters:**
+   - `channel` (`String`): The notification channel identifier.
+   - `json_name` (`String`): Name of the JSON file containing notification data.
+   - `past_n_seconds` (`int`, optional): Delay in seconds before the notification is triggered (default is 0).
+
+[Read this before use JSON](#considerations)
+
+---
+### Cancel a scheduled notification
+```gdscript
+cancel(notification_id: int) -> String
+```
+**Parameters:**
+   - `notification_id` (`int`): The ID of the notification to cancel. If the notification has already been sent, it will be removed from the notification bar.
+
+
+## Considerations
+- `NotificationNode` methods return a `String`. This is a stringified object. If needed, you can parse it with `NotificationResult.parse(res: String) -> NotificationResult` Currently, the available results are: `NotificationCreated`, `NotificationCanceled`, and `NotificationError`. This implementation is still basic, so the methods return a `String` to let you handle it as you find most appropriate.
+- To save and modify JSONs use `JSONHandler.save_json(name: String, data: Dictionary = {})`.
 
 
 ## Future implementations
