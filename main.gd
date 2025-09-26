@@ -44,7 +44,7 @@ func _on_json_pressed() -> void:
 			"small_icon.png",
 			Notification.Priority.HIGH
 	))
-	var json_name = JSONHandler.get_json_path("on_json_pressed")
+	var json_name = "on_json_pressed"
 	JSONHandler.save_json(json_name, init_noti.as_dictionary())
 	NotificationNode.schedule_json(channel, json_name, delay)
 	init_noti.set_lines(['New NEW notification', 'JSON UPDATED!!!'] as Array[String])

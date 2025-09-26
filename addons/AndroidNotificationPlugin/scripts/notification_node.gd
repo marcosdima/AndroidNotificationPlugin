@@ -71,7 +71,7 @@ static func schedule_json(
 	if !validate_channel_id(channel): return ""
 	return _instance._plugin.scheduleJson(
 		channel,
-		json_name,
+		JSONHandler.get_json_path(json_name),
 		past_n_seconds,
 	)
 

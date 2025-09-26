@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://ch54hrrwwgnf8"]
 
-[ext_resource type="Script" uid="uid://bl06hdbdus50v" path="res://addons/NotificationHandler/scripts/notification_node.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bl06hdbdus50v" path="res://addons/AndroidNotificationPlugin/scripts/notification_node.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bx8cfqe2ic52r" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="Script" uid="uid://cknw6c3c8filt" path="res://addons/NotificationHandler/scripts/data/imagen.gd" id="2_1bvp3"]
-[ext_resource type="Script" uid="uid://bo8p0iulxlldr" path="res://addons/NotificationHandler/scripts/data/notifications/notification.gd" id="2_7mycd"]
-[ext_resource type="Script" uid="uid://c7r57bj1xl7r4" path="res://addons/NotificationHandler/scripts/data/channel.gd" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://cknw6c3c8filt" path="res://addons/AndroidNotificationPlugin/scripts/data/imagen.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bo8p0iulxlldr" path="res://addons/AndroidNotificationPlugin/scripts/data/notifications/notification.gd" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://c7r57bj1xl7r4" path="res://addons/AndroidNotificationPlugin/scripts/data/channel.gd" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dnou3fd3dwi4e" path="res://static/images/mate.png" id="3_lquwl"]
 
 [sub_resource type="Resource" id="Resource_272bh"]
